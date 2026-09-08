@@ -3,8 +3,8 @@ import tailwind from '@astrojs/tailwind';
 import react from '@astrojs/react';
 
 export default defineConfig({
-  site: 'https://drfarmfabricatorsandengineers-lab.github.io',
-  base: '/codcentralstudio',
+  site: 'https://codcentral.top',
+  base: '/',
   integrations: [tailwind(), react()],
   build: {
     format: 'file',
