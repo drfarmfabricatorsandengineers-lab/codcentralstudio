@@ -8,7 +8,7 @@ import Footer from '../components/Footer.astro';
   title="Thank You — CodCentral"
   description="We received your message and will get back to you within one business day."
 >
-  <Navbar client:load />
+  <Navbar baseUrl={import.meta.env.BASE_URL} client:load />
 
   <main class="bg-primary min-h-screen flex items-center justify-center px-6 pt-24 pb-20">
     <div class="flex flex-col items-center text-center gap-6 max-w-lg">
@@ -22,7 +22,7 @@ import Footer from '../components/Footer.astro';
         Thank you for reaching out. A member of our team will get back to you within one business day.
       </p>
       <a
-        href="/"
+        href={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/`}
         class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-secondary text-white font-bold text-sm tracking-wide hover:bg-red-600 hover:scale-105 transition-all duration-200 mt-2"
       >
         Back to Home

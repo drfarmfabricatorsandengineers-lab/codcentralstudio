@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { base } from '../utils/base';
 
 const categories = ['All', 'SEO', 'Social Media', 'Google Ads', 'Web & Tech', 'Strategy'];
 
@@ -123,7 +124,7 @@ const typeColors: Record<string, string> = {
 function ResourceCard({ r }: { r: typeof resources[0] }) {
   return (
     <a
-      href={`/resources/${r.slug}`}
+      href={base(`/resources/${r.slug}`)}
       className="group flex flex-col bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-primary/20 hover:shadow-lg transition-all duration-300"
     >
       <div className="relative overflow-hidden h-44">
@@ -223,7 +224,7 @@ export default function Resources() {
             <p className="text-white font-black text-xl tracking-tight">Want us to grow your brand instead?</p>
             <p className="text-white/60 text-sm">Skip the reading — let our team do the work for you.</p>
           </div>
-          <a href="/contact" className="flex-shrink-0 inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-secondary text-white font-bold text-sm tracking-wide transition-all duration-200 hover:bg-red-600 hover:scale-105 whitespace-nowrap">
+          <a href={base('/contact')} className="flex-shrink-0 inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-secondary text-white font-bold text-sm tracking-wide transition-all duration-200 hover:bg-red-600 hover:scale-105 whitespace-nowrap">
             Book a Free Session
             <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M12 5l7 7-7 7" /></svg>
           </a>

@@ -8,7 +8,7 @@ import Footer from '../components/Footer.astro';
   title="Contact Us — CodCentral Digital Agency"
   description="Get in touch with CodCentral. Tell us about your goals and we'll get back to you within one business day."
 >
-  <Navbar client:load />
+  <Navbar baseUrl={import.meta.env.BASE_URL} client:load />
 
   <main class="bg-primary min-h-screen pt-32 pb-20 px-6">
     <div class="max-w-7xl mx-auto">

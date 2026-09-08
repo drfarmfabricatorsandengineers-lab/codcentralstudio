@@ -9,7 +9,7 @@ import Footer from '../components/Footer.astro';
   title="Resources — CodCentral Digital Agency"
   description="Free guides on SEO, Google Ads, social media, M-Pesa integration and digital strategy — written by Kenya's leading digital marketing specialists."
 >
-  <Navbar client:load />
+  <Navbar baseUrl={import.meta.env.BASE_URL} client:load />
   <main class="pt-24">
     <Resources client:load />
   </main>

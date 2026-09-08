@@ -1,4 +1,5 @@
 import React from 'react';
+import { base } from '../utils/base';
 
 const featured = [
   {
@@ -51,7 +52,7 @@ export default function ResourcesPreview() {
             </p>
           </div>
           <a
-            href="/resources"
+            href={base('/resources')}
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full border-2 border-primary text-primary text-sm font-bold tracking-wide transition-all duration-200 hover:bg-primary hover:text-white hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary flex-shrink-0"
           >
             View All Resources
@@ -66,7 +67,7 @@ export default function ResourcesPreview() {
           {featured.map((r) => (
             <a
               key={r.title}
-              href={`/resources/${r.slug}`}
+              href={base(`/resources/${r.slug}`)}
               className="group flex flex-col bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-primary/20 hover:shadow-lg transition-all duration-300"
             >
               <div className="relative overflow-hidden h-44">
@@ -112,7 +113,7 @@ export default function ResourcesPreview() {
         {/* Bottom CTA */}
         <div className="flex justify-center">
           <a
-            href="/resources"
+            href={base('/resources')}
             className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-primary text-white text-sm font-bold tracking-wide transition-all duration-200 hover:bg-secondary hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary"
           >
             See All 12 Free Resources

@@ -9,7 +9,7 @@ import Footer from '../components/Footer.astro';
   title="About Us — CodCentral Digital Agency"
   description="CodCentral started in 2025 inside a bedsitter with one conviction — to stop random marketing. Meet the team behind Kenya's first fully online marketing agency."
 >
-  <Navbar client:load />
+  <Navbar baseUrl={import.meta.env.BASE_URL} client:load />
   <main>
     <About client:load />
   </main>

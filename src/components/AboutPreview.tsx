@@ -1,4 +1,5 @@
 import React from 'react';
+import { base } from '../utils/base';
 
 export default function AboutPreview() {
   return (
@@ -48,7 +49,7 @@ export default function AboutPreview() {
           </div>
 
           <a
-            href="/about-us"
+            href={base('/about-us')}
             className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-primary text-white text-sm font-bold tracking-wide transition-all duration-200 hover:bg-secondary hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary self-start"
           >
             Meet the Full Team
@@ -62,7 +63,7 @@ export default function AboutPreview() {
         <div className="relative">
           <div className="rounded-3xl overflow-hidden shadow-xl aspect-[4/3]">
             <img
-              src="/codcentral team.jpg"
+              src={base('/codcentral team.jpg')}
               alt="CodCentral team"
               className="w-full h-full object-cover"
               loading="lazy"

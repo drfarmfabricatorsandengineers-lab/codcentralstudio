@@ -10,7 +10,7 @@ import Footer from '../components/Footer.astro';
   title="Services — CodCentral Digital Agency"
   description="Google Business Optimization, Website Creation, Web Apps, M-Pesa Daraja API, Social Media Management, Meta Ads, Google Ads and SEO — all under one roof."
 >
-  <Navbar client:load />
+  <Navbar baseUrl={import.meta.env.BASE_URL} client:load />
   <main class="pt-24">
     <HowWeGrow client:load />
     <Services client:load />

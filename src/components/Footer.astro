@@ -1,5 +1,6 @@
 ---
 import Logo from './Logo';
+const B = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <footer class="bg-primary border-t border-white/10">
@@ -8,7 +9,7 @@ import Logo from './Logo';
 
       <!-- Brand column -->
       <div class="flex flex-col gap-5 lg:col-span-1">
-        <Logo variant="light" client:load />
+        <Logo variant="light" baseUrl={import.meta.env.BASE_URL} client:load />
         <p class="text-white/50 text-sm leading-relaxed max-w-xs">
           Kenya's first fully online digital marketing agency. We stop random marketing and grow brands with strategy, technology and imagination.
         </p>
@@ -44,7 +45,7 @@ import Logo from './Logo';
             'SEO — Local SEO Experts',
           ].map((s) => (
             <li>
-              <a href="/services" class="text-white/50 text-sm hover:text-secondary transition-colors duration-200">{s}</a>
+              <a href={`${B}/services`} class="text-white/50 text-sm hover:text-secondary transition-colors duration-200">{s}</a>
             </li>
           ))}
         </ul>
@@ -55,11 +56,11 @@ import Logo from './Logo';
         <h4 class="text-white text-sm font-bold tracking-wide uppercase">Company</h4>
         <ul class="flex flex-col gap-2.5">
           {[
-            { label: 'About Us', href: '/about-us' },
-            { label: 'Our Work', href: '/works' },
-            { label: 'Resources', href: '/resources' },
-            { label: 'Contact', href: '/contact' },
-            { label: 'Work With Us', href: '/contact' },
+            { label: 'About Us', href: `${B}/about-us` },
+            { label: 'Our Work', href: `${B}/works` },
+            { label: 'Resources', href: `${B}/resources` },
+            { label: 'Contact', href: `${B}/contact` },
+            { label: 'Work With Us', href: `${B}/contact` },
           ].map((l) => (
             <li>
               <a href={l.href} class="text-white/50 text-sm hover:text-secondary transition-colors duration-200">{l.label}</a>
@@ -81,7 +82,7 @@ import Logo from './Logo';
             <span class="text-white/50 text-sm">Nairobi, Kenya</span>
           </li>
           <li class="mt-2">
-            <a href="/contact" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-secondary text-white text-xs font-bold tracking-wide hover:bg-red-600 transition-colors">
+            <a href={`${B}/contact`} class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-secondary text-white text-xs font-bold tracking-wide hover:bg-red-600 transition-colors">
               Book a Free Session
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>

@@ -3,6 +3,8 @@ import BaseLayout from './BaseLayout.astro';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer.astro';
 
+const B = import.meta.env.BASE_URL.replace(/\/$/, '');
+
 interface Props {
   title: string;
   description: string;
@@ -18,7 +20,7 @@ const { title, description, category, type, readTime, publishDate, heroImage, ta
 ---
 
 <BaseLayout title={`${title} — CodCentral Resources`} description={description}>
-  <Navbar client:load />
+  <Navbar baseUrl={import.meta.env.BASE_URL} client:load />
 
   <main class="bg-white pt-24">
 
@@ -74,7 +76,7 @@ const { title, description, category, type, readTime, publishDate, heroImage, ta
               <p class="text-white/60 text-sm">Let our team do the heavy lifting. Book a free strategy session.</p>
             </div>
             <a
-              href="/contact"
+              href={`${B}/contact`}
               class="flex-shrink-0 inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-secondary text-white font-bold text-sm tracking-wide hover:bg-red-600 hover:scale-105 transition-all duration-200 whitespace-nowrap"
             >
               Book a Free Session
@@ -91,13 +93,13 @@ const { title, description, category, type, readTime, publishDate, heroImage, ta
             <div class="rounded-2xl border border-gray-100 p-5 flex flex-col gap-4">
               <p class="text-xs font-bold tracking-widest uppercase text-gray-400">More Resources</p>
               <nav class="flex flex-col gap-2">
-                <a href="/resources" class="text-sm text-primary font-medium hover:text-secondary transition-colors">← All Resources</a>
-                <a href="/services" class="text-sm text-gray-500 hover:text-secondary transition-colors">Our Services</a>
-                <a href="/works" class="text-sm text-gray-500 hover:text-secondary transition-colors">See Our Work</a>
-                <a href="/contact" class="text-sm text-gray-500 hover:text-secondary transition-colors">Work With Us</a>
+                <a href={`${B}/resources`} class="text-sm text-primary font-medium hover:text-secondary transition-colors">← All Resources</a>
+                <a href={`${B}/services`} class="text-sm text-gray-500 hover:text-secondary transition-colors">Our Services</a>
+                <a href={`${B}/works`} class="text-sm text-gray-500 hover:text-secondary transition-colors">See Our Work</a>
+                <a href={`${B}/contact`} class="text-sm text-gray-500 hover:text-secondary transition-colors">Work With Us</a>
               </nav>
             </div>
-            <a href="/contact" class="rounded-2xl bg-primary p-5 flex flex-col gap-3 group">
+            <a href={`${B}/contact`} class="rounded-2xl bg-primary p-5 flex flex-col gap-3 group">
               <p class="text-white font-bold text-sm">Want experts to handle this for you?</p>
               <span class="inline-flex items-center gap-1.5 text-secondary text-sm font-semibold group-hover:gap-3 transition-all">
                 Get in touch

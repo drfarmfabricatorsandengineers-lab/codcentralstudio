@@ -14,7 +14,7 @@ import Footer from '../components/Footer.astro';
 ---
 
 <BaseLayout>
-  <Navbar client:load />
+  <Navbar baseUrl={import.meta.env.BASE_URL} client:load />
 
   <main>
     <Hero client:load />

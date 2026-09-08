@@ -1,4 +1,5 @@
 import React from 'react';
+import { base } from '../utils/base';
 
 const milestones = [
   { year: '2025', event: 'Founded inside a bedsitter in Nairobi' },
@@ -120,7 +121,7 @@ export default function About() {
             {/* Main image */}
             <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-[4/5]">
               <img
-                src="/codcentral team.jpg"
+                src={base('/codcentral team.jpg')}
                 alt="CodCentral team"
                 className="w-full h-full object-cover"
                 loading="lazy"

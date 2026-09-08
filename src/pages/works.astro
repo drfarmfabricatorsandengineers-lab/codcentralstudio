@@ -9,7 +9,7 @@ import Footer from '../components/Footer.astro';
   title="Our Works — CodCentral Digital Agency"
   description="Real clients, real results. See how CodCentral has helped brands across Kenya, Australia and Pakistan grow through strategy, technology and imagination."
 >
-  <Navbar client:load />
+  <Navbar baseUrl={import.meta.env.BASE_URL} client:load />
   <main class="pt-24">
     <Portfolio client:load />
   </main>
