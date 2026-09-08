@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { base } from '../utils/base';
 
 const projects = [
   {
@@ -119,7 +120,7 @@ export default function Portfolio() {
             </p>
           </div>
           <a
-            href="#contact"
+            href={base('/contact')}
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-secondary text-white text-sm font-semibold tracking-wide transition-all duration-200 hover:bg-red-600 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-secondary flex-shrink-0"
           >
             Start Your Project
@@ -234,7 +235,7 @@ export default function Portfolio() {
             {/* CTA */}
             <div className="mt-auto pt-2">
               <a
-                href="#contact"
+                href={base('/contact')}
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-white text-sm font-bold tracking-wide transition-all duration-200 hover:bg-secondary hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 Get Similar Results
@@ -257,7 +258,7 @@ export default function Portfolio() {
             </p>
           </div>
           <a
-            href="#contact"
+            href={base('/contact')}
             className="flex-shrink-0 inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-secondary text-white font-bold text-sm tracking-wide transition-all duration-200 hover:bg-red-600 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 focus:ring-offset-primary whitespace-nowrap"
           >
             Book a Free Session

@@ -177,7 +177,7 @@ export default function Resources() {
 
         {/* Featured */}
         {featured && (
-          <a href={`/resources/${featured.slug}`} className="group grid grid-cols-1 lg:grid-cols-2 rounded-3xl overflow-hidden border border-gray-100 hover:border-primary/20 hover:shadow-xl bg-white transition-all duration-300">
+          <a href={base(`/resources/${featured.slug}`)} className="group grid grid-cols-1 lg:grid-cols-2 rounded-3xl overflow-hidden border border-gray-100 hover:border-primary/20 hover:shadow-xl bg-white transition-all duration-300">
             <div className="relative overflow-hidden min-h-[280px]">
               <img src={featured.image} alt={featured.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />

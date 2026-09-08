@@ -96,8 +96,8 @@ const B = import.meta.env.BASE_URL.replace(/\/$/, '');
     <div class="border-t border-white/10 mt-12 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
       <p class="text-white/30 text-xs">&copy; {new Date().getFullYear()} CodCentral Digital Agency. All rights reserved.</p>
       <div class="flex items-center gap-4">
-        <a href="/privacy" class="text-white/30 text-xs hover:text-white/60 transition-colors">Privacy Policy</a>
-        <a href="/terms" class="text-white/30 text-xs hover:text-white/60 transition-colors">Terms of Service</a>
+        <a href={`${B}/privacy`} class="text-white/30 text-xs hover:text-white/60 transition-colors">Privacy Policy</a>
+        <a href={`${B}/terms`} class="text-white/30 text-xs hover:text-white/60 transition-colors">Terms of Service</a>
       </div>
     </div>
   </div>

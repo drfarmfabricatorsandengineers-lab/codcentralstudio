@@ -59,11 +59,8 @@ export default function ClientLogos() {
 
         {/* Scrolling track */}
         <div
-          className="flex items-center"
-          style={{
-            animation: 'marquee 30s linear infinite',
-            width: 'max-content',
-          }}
+          className="flex items-center marquee-track"
+          style={{ animation: 'marquee 30s linear infinite', width: 'max-content' }}
           aria-hidden="true"
         >
           {track.map((logo, i) => (
@@ -72,16 +69,7 @@ export default function ClientLogos() {
         </div>
       </div>
 
-      {/* Keyframe injected inline so no extra CSS file needed */}
-      <style>{`
-        @keyframes marquee {
-          0%   { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-        @media (prefers-reduced-motion: reduce) {
-          .flex[style*="marquee"] { animation: none; }
-        }
-      `}</style>
+        {/* Keyframe injected via global.css — no inline style needed */}
     </section>
   );
 }

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { base } from '../utils/base';
 
 const stats = [
   { value: '39+', label: 'Happy Clients' },
@@ -155,7 +156,7 @@ export default function Hero() {
 
               <div className="flex flex-col sm:flex-row items-center gap-4 mt-2">
                 <a
-                  href="#works"
+                  href={base('/works')}
                   className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-secondary text-white text-base font-bold tracking-wide transition-all duration-200 hover:bg-red-600 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 focus:ring-offset-primary shadow-lg shadow-secondary/30"
                 >
                   See Our Work
@@ -164,7 +165,7 @@ export default function Hero() {
                   </svg>
                 </a>
                 <a
-                  href="#contact"
+                  href={base('/contact')}
                   className="inline-flex items-center gap-2 px-8 py-4 rounded-full border-2 border-white/40 text-white text-base font-bold tracking-wide transition-all duration-200 hover:border-white hover:bg-white/10 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-primary"
                 >
                   Book a Free Session

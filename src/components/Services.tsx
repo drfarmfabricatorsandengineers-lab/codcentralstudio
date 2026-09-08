@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { base } from '../utils/base';
 
 const services = [
   {
@@ -174,7 +175,7 @@ export default function Services() {
             </p>
           </div>
           <a
-            href="#contact"
+            href={base('/contact')}
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-white text-sm font-semibold tracking-wide transition-all duration-200 hover:bg-secondary hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary flex-shrink-0"
           >
             Get Started
