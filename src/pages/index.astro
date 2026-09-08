@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar';
+import Hero from '../components/Hero';
+import GlobalPresence from '../components/GlobalPresence';
+import Testimonials from '../components/Testimonials';
+import ClientLogos from '../components/ClientLogos';
+import HowWeGrow from '../components/HowWeGrow';
+import Services from '../components/Services';
+import Portfolio from '../components/Portfolio';
+import AboutPreview from '../components/AboutPreview';
+import ResourcesPreview from '../components/ResourcesPreview';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout>
+  <Navbar client:load />
+
+  <main>
+    <Hero client:load />
+    <GlobalPresence client:load />
+    <Testimonials client:load />
+    <ClientLogos client:load />
+    <HowWeGrow client:load />
+    <Services client:load />
+    <Portfolio client:load />
+    <AboutPreview client:load />
+    <ResourcesPreview client:load />
+  </main>
+
+  <Footer />
+</BaseLayout>

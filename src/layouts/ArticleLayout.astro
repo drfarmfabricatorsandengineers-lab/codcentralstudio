@@ -1,0 +1,117 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  category: string;
+  type: string;
+  readTime: string;
+  publishDate: string;
+  heroImage: string;
+  tags: string[];
+}
+
+const { title, description, category, type, readTime, publishDate, heroImage, tags } = Astro.props;
+---
+
+<BaseLayout title={`${title} — CodCentral Resources`} description={description}>
+  <Navbar client:load />
+
+  <main class="bg-white pt-24">
+
+    <!-- Hero -->
+    <div class="relative w-full h-[420px] overflow-hidden">
+      <img src={heroImage} alt={title} class="w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent" />
+      <div class="absolute bottom-0 left-0 right-0 max-w-4xl mx-auto px-6 lg:px-8 pb-10">
+        <div class="flex flex-wrap items-center gap-3 mb-4">
+          <span class="text-xs font-bold px-3 py-1 rounded-full bg-secondary text-white">{type}</span>
+          <span class="text-xs font-semibold px-3 py-1 rounded-full bg-white/15 backdrop-blur-sm border border-white/25 text-white">{category}</span>
+          <span class="text-xs text-white/60">{readTime}</span>
+          <span class="text-xs text-white/60">·</span>
+          <span class="text-xs text-white/60">{publishDate}</span>
+        </div>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-white leading-tight tracking-tight max-w-3xl">
+          {title}
+        </h1>
+      </div>
+    </div>
+
+    <!-- Article body -->
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 py-14">
+      <div class="flex flex-col lg:flex-row gap-12">
+
+        <!-- Content -->
+        <article class="flex-1 min-w-0">
+          <!-- Tags -->
+          <div class="flex flex-wrap gap-2 mb-8">
+            {tags.map((tag) => (
+              <span class="text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full bg-gray-100 text-gray-500">{tag}</span>
+            ))}
+          </div>
+
+          <!-- Prose content injected via slot -->
+          <div class="prose prose-lg prose-primary max-w-none
+            prose-headings:font-black prose-headings:text-primary prose-headings:tracking-tight
+            prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4
+            prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3
+            prose-p:text-gray-600 prose-p:leading-relaxed
+            prose-a:text-secondary prose-a:no-underline hover:prose-a:underline
+            prose-strong:text-primary
+            prose-ul:text-gray-600 prose-ol:text-gray-600
+            prose-li:my-1
+            prose-blockquote:border-l-secondary prose-blockquote:bg-gray-50 prose-blockquote:py-2 prose-blockquote:px-4 prose-blockquote:rounded-r-lg prose-blockquote:not-italic prose-blockquote:text-gray-700">
+            <slot />
+          </div>
+
+          <!-- Bottom CTA -->
+          <div class="mt-14 rounded-2xl bg-primary px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div class="flex flex-col gap-1 text-center sm:text-left">
+              <p class="text-white font-black text-lg tracking-tight">Ready to apply this to your business?</p>
+              <p class="text-white/60 text-sm">Let our team do the heavy lifting. Book a free strategy session.</p>
+            </div>
+            <a
+              href="/contact"
+              class="flex-shrink-0 inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-secondary text-white font-bold text-sm tracking-wide hover:bg-red-600 hover:scale-105 transition-all duration-200 whitespace-nowrap"
+            >
+              Book a Free Session
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="lg:w-64 flex-shrink-0">
+          <div class="sticky top-28 flex flex-col gap-6">
+            <div class="rounded-2xl border border-gray-100 p-5 flex flex-col gap-4">
+              <p class="text-xs font-bold tracking-widest uppercase text-gray-400">More Resources</p>
+              <nav class="flex flex-col gap-2">
+                <a href="/resources" class="text-sm text-primary font-medium hover:text-secondary transition-colors">← All Resources</a>
+                <a href="/services" class="text-sm text-gray-500 hover:text-secondary transition-colors">Our Services</a>
+                <a href="/works" class="text-sm text-gray-500 hover:text-secondary transition-colors">See Our Work</a>
+                <a href="/contact" class="text-sm text-gray-500 hover:text-secondary transition-colors">Work With Us</a>
+              </nav>
+            </div>
+            <a href="/contact" class="rounded-2xl bg-primary p-5 flex flex-col gap-3 group">
+              <p class="text-white font-bold text-sm">Want experts to handle this for you?</p>
+              <span class="inline-flex items-center gap-1.5 text-secondary text-sm font-semibold group-hover:gap-3 transition-all">
+                Get in touch
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </span>
+            </a>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>

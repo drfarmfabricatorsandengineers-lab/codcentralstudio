@@ -1,0 +1,178 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout
+  title="Contact Us — CodCentral Digital Agency"
+  description="Get in touch with CodCentral. Tell us about your goals and we'll get back to you within one business day."
+>
+  <Navbar client:load />
+
+  <main class="bg-primary min-h-screen pt-32 pb-20 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+
+        <!-- Left — headline + description -->
+        <div class="flex flex-col gap-6 lg:pt-4">
+          <p class="text-xs font-semibold tracking-[0.3em] uppercase text-secondary">Get In Touch</p>
+          <h1 class="text-4xl sm:text-5xl font-black text-white leading-tight tracking-tight">
+            We'd love to <span class="text-secondary">learn about</span> your business
+          </h1>
+          <p class="text-white/60 text-base leading-relaxed max-w-sm">
+            Tell us about your goals, your challenges, and what you are trying to achieve. The more context you give us, the more useful our response will be. A member of our team will get back to you within one business day.
+          </p>
+
+          <!-- Contact details -->
+          <div class="flex flex-col gap-4 mt-4">
+            <a href="mailto:work.codcentral@gmail.com" class="flex items-center gap-3 text-white/70 hover:text-white transition-colors text-sm group">
+              <span class="w-9 h-9 rounded-full border border-white/20 group-hover:border-secondary group-hover:bg-secondary/10 flex items-center justify-center flex-shrink-0 transition-colors">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                </svg>
+              </span>
+              work.codcentral@gmail.com
+            </a>
+
+            <a href="https://wa.me/254754138667" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 text-white/70 hover:text-white transition-colors text-sm group">
+              <span class="w-9 h-9 rounded-full border border-white/20 group-hover:border-secondary group-hover:bg-secondary/10 flex items-center justify-center flex-shrink-0 transition-colors">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                  <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.124 1.532 5.857L.072 23.928l6.228-1.635A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.37l-.36-.214-3.7.97.988-3.608-.235-.371A9.818 9.818 0 1112 21.818z"/>
+                </svg>
+              </span>
+              WhatsApp Us
+            </a>
+
+            <div class="flex items-center gap-3 text-white/70 text-sm">
+              <span class="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center flex-shrink-0">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                </svg>
+              </span>
+              Nairobi, Kenya
+            </div>
+          </div>
+
+          <!-- Trust badges -->
+          <div class="flex flex-wrap gap-4 mt-6 pt-6 border-t border-white/10">
+            <div class="flex flex-col gap-0.5">
+              <span class="text-2xl font-black text-white">39+</span>
+              <span class="text-xs text-white/40">Brands Served</span>
+            </div>
+            <div class="w-px bg-white/10 self-stretch" aria-hidden="true"></div>
+            <div class="flex flex-col gap-0.5">
+              <span class="text-2xl font-black text-white">3</span>
+              <span class="text-xs text-white/40">Countries</span>
+            </div>
+            <div class="w-px bg-white/10 self-stretch" aria-hidden="true"></div>
+            <div class="flex flex-col gap-0.5">
+              <span class="text-2xl font-black text-white">1 Day</span>
+              <span class="text-xs text-white/40">Response Time</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right — form -->
+        <form
+          class="flex flex-col gap-8"
+          name="contact"
+          method="POST"
+          action="https://formspree.io/f/xdkobpqv"
+        >
+          <input type="hidden" name="_next" value="https://drfarmfabricatorsandengineers-lab.github.io/codcentralstudio/thank-you" />
+          <input type="hidden" name="_subject" value="New enquiry from CodCentral website" />
+
+          <!-- Row 1 -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+            <div>
+              <input
+                type="text"
+                name="first_name"
+                placeholder="First Name"
+                required
+                class="bg-transparent border-0 border-b border-white/25 focus:border-secondary text-white placeholder-white/40 text-sm py-2 outline-none transition-colors duration-200 w-full"
+              />
+            </div>
+            <div>
+              <input
+                type="text"
+                name="last_name"
+                placeholder="Last Name"
+                required
+                class="bg-transparent border-0 border-b border-white/25 focus:border-secondary text-white placeholder-white/40 text-sm py-2 outline-none transition-colors duration-200 w-full"
+              />
+            </div>
+          </div>
+
+          <!-- Row 2 -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+            <div>
+              <input
+                type="email"
+                name="email"
+                placeholder="Email Address"
+                required
+                class="bg-transparent border-0 border-b border-white/25 focus:border-secondary text-white placeholder-white/40 text-sm py-2 outline-none transition-colors duration-200 w-full"
+              />
+            </div>
+            <div>
+              <input
+                type="tel"
+                name="phone"
+                placeholder="Phone Number"
+                class="bg-transparent border-0 border-b border-white/25 focus:border-secondary text-white placeholder-white/40 text-sm py-2 outline-none transition-colors duration-200 w-full"
+              />
+            </div>
+          </div>
+
+          <!-- Row 3 -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+            <div>
+              <input
+                type="text"
+                name="company"
+                placeholder="Company / Organisation"
+                class="bg-transparent border-0 border-b border-white/25 focus:border-secondary text-white placeholder-white/40 text-sm py-2 outline-none transition-colors duration-200 w-full"
+              />
+            </div>
+            <div>
+              <input
+                type="url"
+                name="website"
+                placeholder="Website"
+                class="bg-transparent border-0 border-b border-white/25 focus:border-secondary text-white placeholder-white/40 text-sm py-2 outline-none transition-colors duration-200 w-full"
+              />
+            </div>
+          </div>
+
+          <!-- Message -->
+          <div>
+            <textarea
+              name="message"
+              placeholder="How can we help?"
+              rows="5"
+              required
+              class="bg-transparent border-0 border-b border-white/25 focus:border-secondary text-white placeholder-white/40 text-sm py-2 outline-none transition-colors duration-200 w-full resize-none"
+            ></textarea>
+          </div>
+
+          <!-- Submit -->
+          <div>
+            <button
+              type="submit"
+              class="px-10 py-4 rounded-full bg-secondary text-white font-bold text-sm tracking-widest uppercase transition-all duration-200 hover:bg-red-500 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 focus:ring-offset-primary"
+            >
+              Submit
+            </button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar';
+import Resources from '../components/Resources';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout
+  title="Resources — CodCentral Digital Agency"
+  description="Free guides on SEO, Google Ads, social media, M-Pesa integration and digital strategy — written by Kenya's leading digital marketing specialists."
+>
+  <Navbar client:load />
+  <main class="pt-24">
+    <Resources client:load />
+  </main>
+  <Footer />
+</BaseLayout>

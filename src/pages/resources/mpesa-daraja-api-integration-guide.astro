@@ -1,0 +1,152 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+---
+
+<ArticleLayout
+  title="How to Integrate M-Pesa Daraja API Into Your Website (2025)"
+  description="A clear, non-technical walkthrough of setting up M-Pesa STK Push, C2B and B2C payments on your website or web app using Safaricom's Daraja API."
+  category="Web & Tech"
+  type="Guide"
+  readTime="8 min read"
+  publishDate="May 2025"
+  heroImage="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1400&q=85&fit=crop"
+  tags={['M-Pesa', 'Daraja API', 'Payments', 'Safaricom', 'Kenya']}
+>
+
+<p>M-Pesa is not just a payment method in Kenya — it is infrastructure. With over 30 million active users, M-Pesa processes more transactions daily than many African stock markets. If your website cannot accept M-Pesa payments, you are leaving a massive amount of revenue on the table. This guide walks you through integrating Safaricom's Daraja API into your website or web app — clearly and practically.</p>
+
+<h2>What is the Daraja API?</h2>
+
+<p>Daraja (meaning "bridge" in Swahili) is Safaricom's developer platform that allows businesses to integrate M-Pesa payment functionality into their websites, apps and systems. It exposes several APIs for different payment flows:</p>
+
+<ul>
+  <li><strong>STK Push (Lipa Na M-Pesa Online)</strong>: The most common integration. You enter an amount, the customer's phone is prompted to enter their M-Pesa PIN, and payment is confirmed automatically. No USSD menus for the customer.</li>
+  <li><strong>C2B (Customer to Business)</strong>: Allows customers to pay your till or paybill number and your system gets notified of the payment in real-time.</li>
+  <li><strong>B2C (Business to Customer)</strong>: Send money from your business to a customer's M-Pesa. Used for refunds, salary payments, commissions.</li>
+  <li><strong>Account Balance API</strong>: Query your M-Pesa account balance programmatically.</li>
+  <li><strong>Transaction Status API</strong>: Check the status of any past transaction.</li>
+</ul>
+
+<img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&q=80&fit=crop" alt="Mobile payments and fintech" class="rounded-2xl w-full my-8 shadow-md" loading="lazy" />
+
+<h2>Prerequisites Before You Start</h2>
+
+<p>Before writing a single line of code, you need:</p>
+
+<ol>
+  <li><strong>A Safaricom Business Account</strong>: Your business must have a registered M-Pesa Paybill or Till number.</li>
+  <li><strong>A Daraja Developer Account</strong>: Register at developer.safaricom.co.ke. This is free.</li>
+  <li><strong>A live, public-facing URL (callback URL)</strong>: Safaricom sends payment confirmations to a URL you specify. This URL must be publicly accessible — not localhost. Use ngrok for testing locally.</li>
+  <li><strong>A developer (or basic coding knowledge)</strong>: The API is well-documented, but you need to be comfortable making HTTP requests. Libraries exist for PHP, Node.js, Python, Laravel and Django.</li>
+</ol>
+
+<h2>Step 1: Create a Daraja App</h2>
+
+<ol>
+  <li>Log into developer.safaricom.co.ke</li>
+  <li>Navigate to "My Apps" and click "Add a new app"</li>
+  <li>Name your app and select the APIs you need (start with M-Pesa Sandbox for testing)</li>
+  <li>Note your <strong>Consumer Key</strong> and <strong>Consumer Secret</strong> — these are your API credentials</li>
+  <li>In the Sandbox, you will also get test credentials including a test Shortcode, Passkey, and test phone numbers</li>
+</ol>
+
+<h2>Step 2: Get an Access Token</h2>
+
+<p>Every API call requires an access token for authentication. You generate it by sending your Consumer Key and Consumer Secret to the OAuth endpoint:</p>
+
+<pre class="bg-gray-900 text-green-400 rounded-xl p-5 overflow-x-auto text-sm leading-relaxed my-6"><code>GET https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials
+Authorization: Basic [Base64(ConsumerKey:ConsumerSecret)]
+
+Response:
+&#123;
+  "access_token": "YOUR_ACCESS_TOKEN",
+  "expires_in": "3599"
+&#125;</code></pre>
+
+<p>Access tokens expire after 3,600 seconds (1 hour). Build your system to generate a new one when needed rather than caching indefinitely.</p>
+
+<img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=900&q=80&fit=crop" alt="M-Pesa payment integration" class="rounded-2xl w-full my-8 shadow-md" loading="lazy" />
+
+<h2>Step 3: Implement STK Push</h2>
+
+<p>STK Push is the payment flow where the customer's phone receives a prompt to pay. Here is the API call:</p>
+
+<pre class="bg-gray-900 text-green-400 rounded-xl p-5 overflow-x-auto text-sm leading-relaxed my-6"><code>POST https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest
+Authorization: Bearer YOUR_ACCESS_TOKEN
+Content-Type: application/json
+
+&#123;
+  "BusinessShortCode": "174379",
+  "Password": "[Base64(Shortcode+Passkey+Timestamp)]",
+  "Timestamp": "20250101120000",
+  "TransactionType": "CustomerPayBillOnline",
+  "Amount": "100",
+  "PartyA": "254712345678",
+  "PartyB": "174379",
+  "PhoneNumber": "254712345678",
+  "CallBackURL": "https://yourdomain.com/mpesa/callback",
+  "AccountReference": "Order123",
+  "TransactionDesc": "Payment for Order 123"
+&#125;</code></pre>
+
+<p>Key fields explained:</p>
+<ul>
+  <li><strong>Password</strong>: Base64 encoding of Shortcode + Passkey + Timestamp concatenated</li>
+  <li><strong>Timestamp</strong>: Current datetime in YYYYMMDDHHmmss format</li>
+  <li><strong>PartyA</strong>: Customer phone number in 254 format (no +, no leading 0)</li>
+  <li><strong>CallBackURL</strong>: Your server endpoint that receives the payment confirmation</li>
+  <li><strong>AccountReference</strong>: Your order/transaction reference (shows on customer's M-Pesa message)</li>
+</ul>
+
+<h2>Step 4: Handle the Callback</h2>
+
+<p>When the customer pays (or declines), Safaricom sends a POST request to your CallBackURL. Your server must respond with HTTP 200 immediately, then process the data:</p>
+
+<pre class="bg-gray-900 text-green-400 rounded-xl p-5 overflow-x-auto text-sm leading-relaxed my-6"><code>// Successful payment callback
+&#123;
+  "Body": &#123;
+    "stkCallback": &#123;
+      "MerchantRequestID": "29115-34620561-1",
+      "CheckoutRequestID": "ws_CO_191220191020363925",
+      "ResultCode": 0,
+      "ResultDesc": "The service request is processed successfully.",
+      "CallbackMetadata": &#123;
+        "Item": [
+          &#123;"Name": "Amount", "Value": 100&#125;,
+          &#123;"Name": "MpesaReceiptNumber", "Value": "NLJ7RT61SV"&#125;,
+          &#123;"Name": "TransactionDate", "Value": 20191219102115&#125;,
+          &#123;"Name": "PhoneNumber", "Value": 254712345678&#125;
+        ]
+      &#125;
+    &#125;
+  &#125;
+&#125;</code></pre>
+
+<p>ResultCode 0 = success. Any other code = failure or cancellation. Extract the MpesaReceiptNumber as your payment reference and update your database accordingly.</p>
+
+<h2>Step 5: Go Live</h2>
+
+<p>Once your integration is working in the Sandbox:</p>
+
+<ol>
+  <li>Log into your Daraja account and click "Go Live"</li>
+  <li>Fill in your business details and upload required documents (KRA PIN, Business registration)</li>
+  <li>Wait for approval (typically 2–5 business days)</li>
+  <li>Replace Sandbox URLs with production URLs (api.safaricom.co.ke instead of sandbox.safaricom.co.ke)</li>
+  <li>Update your credentials with the live Consumer Key, Consumer Secret and Shortcode</li>
+  <li>Test with a small real payment before going fully live</li>
+</ol>
+
+<blockquote>Always test your callback handler thoroughly in sandbox before going live. Missed or mishandled callbacks mean customers who paid but whose orders were not fulfilled — the worst possible outcome. Log every single callback to your database, even before processing it.</blockquote>
+
+<h2>Recommended Libraries</h2>
+
+<ul>
+  <li><strong>PHP/Laravel</strong>: safaricom/daraja-php, iamkmoney/mpesa-laravel</li>
+  <li><strong>Node.js</strong>: mpesa-api, daraja-api-node</li>
+  <li><strong>Python/Django</strong>: python-daraja, django-mpesa</li>
+</ul>
+
+<p>Need a fully tested M-Pesa integration built for your specific platform? <a href="/contact">Get in touch with our development team</a> — we handle this regularly.</p>
+
+</ArticleLayout>

@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar';
+import About from '../components/About';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout
+  title="About Us — CodCentral Digital Agency"
+  description="CodCentral started in 2025 inside a bedsitter with one conviction — to stop random marketing. Meet the team behind Kenya's first fully online marketing agency."
+>
+  <Navbar client:load />
+  <main class="pt-24">
+    <About client:load />
+  </main>
+  <Footer />
+</BaseLayout>

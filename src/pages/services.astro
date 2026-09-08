@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar';
+import Services from '../components/Services';
+import HowWeGrow from '../components/HowWeGrow';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout
+  title="Services — CodCentral Digital Agency"
+  description="Google Business Optimization, Website Creation, Web Apps, M-Pesa Daraja API, Social Media Management, Meta Ads, Google Ads and SEO — all under one roof."
+>
+  <Navbar client:load />
+  <main class="pt-24">
+    <HowWeGrow client:load />
+    <Services client:load />
+  </main>
+  <Footer />
+</BaseLayout>
